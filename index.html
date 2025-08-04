@@ -3,77 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <title>Legends Chess Zone</title>
-  
-  <!-- ✅ Load Working Styles for Chessboard -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chessboardjs@1.0.0/dist/chessboard.min.css">
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
+      background: #f7f7f7;
+      margin: 0;
       padding: 0;
-      margin: 0;
-      text-align: center;
+      color: #333;
     }
-
-    h1 {
-      background: #2c3e50;
+    header {
+      background-color: #2c3e50;
       color: white;
-      padding: 20px;
+      text-align: center;
+      padding: 30px 10px;
+    }
+    h1 {
       margin: 0;
+      font-size: 36px;
     }
-
-    #board {
+    .section {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #2c3e50;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+    .contact {
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .lichess-board {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    iframe {
+      border: none;
       width: 400px;
-      margin: 30px auto;
-    }
-
-    .btns {
-      margin: 20px;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 16px;
-      cursor: pointer;
+      height: 400px;
     }
   </style>
 </head>
 <body>
 
-  <h1>Legends Chess Zone</h1>
-  <div id="board"></div>
+  <header>
+    <h1>Legends Chess Zone</h1>
+    <p>Sharpening Young Minds with Every Move</p>
+  </header>
 
-  <div class="btns">
-    <button onclick="game.reset(); board.position(game.fen());">Start</button>
-    <button onclick="game.clear(); board.position(game.fen());">Clear</button>
+  <div class="section">
+    <h2>About Us</h2>
+    <p>Welcome to our Chess Academy! Whether you're a beginner or an aspiring master, we offer personalized lessons, interactive puzzles, and expert coaching to help you level up your game. Join our growing community and take your chess journey to the next level!</p>
   </div>
 
-  <!-- ✅ Load JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/chess.js@0.13.4/chess.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chessboardjs@1.0.0/dist/chessboard.min.js"></script>
+  <div class="section">
+    <h2>Dive Into the Game</h2>
+    <p>Ready to Make Your First Move?</p>
 
-  <script>
-    const game = new Chess();
+    <!-- ✅ Lichess Embed Board -->
+    <div class="lichess-board">
+      <iframe src="https://lichess.org/embed?theme=auto&bg=auto"></iframe>
+    </div>
+    <p style="text-align:center;"><a href="https://lichess.org" target="_blank">Play on Lichess.org</a></p>
+  </div>
 
-    const board = Chessboard('board', {
-      draggable: true,
-      position: 'start',
-      onDrop: function(source, target) {
-        const move = game.move({
-          from: source,
-          to: target,
-          promotion: 'q'
-        });
+  <div class="section contact">
+    <h2>Contact Us</h2>
+    <p><strong>Location:</strong> [LUCKNOW]</p>
+    <p><strong>Phone:</strong> +91-73766 80197</p>
+    <p><strong>Email:</strong> legendschesszone@gmail.com</p>
+  </div>
 
-        if (move === null) return 'snapback';
-      },
-      onSnapEnd: function() {
-        board.position(game.fen());
-      }
-    });
-  </script>
+  <footer>
+    &copy; 2025 Legends Chess Zone. All rights reserved.
+  </footer>
 
 </body>
 </html>
